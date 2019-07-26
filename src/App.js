@@ -4,6 +4,9 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
 
+import Nav from './components/Nav';
+import Jumbtron from './components/Jumbotron';
+
 class App extends Component {
   state = {
     friends
@@ -42,8 +45,11 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Title>Clicky Game</Title>
+      <div>
+      {/* // <Wrapper> */}
+        <Nav />
+        <Jumbtron />
+        {/* <Title>Clicky Game</Title> */}
         {/* {this.state.friends.map(friend => (
           <FriendCard
             shuffleFriends={this.shuffleFriends}
@@ -55,7 +61,8 @@ class App extends Component {
             location={friend.location}
           />
         ))} */}
-      </Wrapper>
+          {/* </Wrapper> */}
+          </div>
     );
   }
 }
