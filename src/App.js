@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <Wrapper>
         <Title>Clicky Game</Title>
-        {this.state.friends.map(friend => (
+        {/* {this.state.friends.map(friend => (
           <FriendCard
             shuffleFriends={this.shuffleFriends}
             id={friend.id}
@@ -54,7 +54,7 @@ class App extends Component {
             occupation={friend.occupation}
             location={friend.location}
           />
-        ))}
+        ))} */}
       </Wrapper>
     );
   }
