@@ -5,16 +5,11 @@ import Title from "./components/Title";
 import friends from "./friends.json";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
   state = {
     friends
   };
 
-  removeFriend = id => {
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    this.setState({ friends });
-  };
-
+  
   //fisher shuffle - https://bost.ocks.org/mike/shuffle/
   shuffle = (array, id) => {
     for (var j = 0; j < array.length; j++) {
@@ -40,46 +35,17 @@ class App extends Component {
   }
 
   shuffleFriends = (id) => {
-    // let friends = [...this.state.friends];
-    // for (var i = 0; i < friends.length; i++) {
-    //   if (friends[i].id === id) {
-    //     friends[i].selected = true;
-    //   }
-    // }
-    // let newFriends = this.shuffle(friends);
     let newFriends = this.shuffle(this.state.friends, id);
-
-    // console.clear();
-
-    // for (var friend in newFriends) {
-    //   console.log(newFriends[friend]);
-    // }
-    // if (friends[id].selected) {
-    //   console.log(friends[id]);
-    //   console.log('already selected');
-    // } else {
-    //   console.log('new');
-    //   friends[id].selected = true;
-    // }
-    
-    // for (var friend in friends) {
-    //   if (friends[friend].selected) {
-    //     console.log(friends[friend]);
-    //   }
-    // }
-    // console.log(friends[id].name, friends[id].selected);
 
     this.setState({ newFriends });
   };
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
-        <Title>Friends List</Title>
+        <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            // removeFriend={this.removeFriend}
             shuffleFriends={this.shuffleFriends}
             id={friend.id}
             key={friend.id}
