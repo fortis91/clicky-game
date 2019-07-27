@@ -21,15 +21,16 @@ class App extends Component {
       if (array[j].id === id) {
         console.log(array[j].name)
         if (array[j].selected) {
+          console.clear();
           this.setState({ score: 0 });
-          this.setState({ status: "Keep going.." });
+          this.setState({ status: "Try again.." });
           friends.forEach(friend => (friend.clicked = false));
         } else {
           console.log(this.state.score);
           array[j].selected = true;
           let newScore = this.state.score + 1;
           this.setState({ score: newScore });
-          this.setState({ status: "Try again" });
+          this.setState({ status: "Keep going" });
         }
       }
     }
@@ -71,6 +72,7 @@ class App extends Component {
             location={friend.location}
           />
         ))}
+        {/* <footer class="footer"><div class="bottom">Clicky Game! <img alt="react" src="assets/images/react.svg"></div></footer> */}
           </Wrapper>
     );
   }
