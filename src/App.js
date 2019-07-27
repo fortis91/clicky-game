@@ -9,7 +9,9 @@ import Jumbtron from './components/Jumbotron';
 
 class App extends Component {
   state = {
-    friends
+    friends,
+    score: 0,
+    status: "Click on any image to begin"
   };
 
   
@@ -19,13 +21,19 @@ class App extends Component {
       if (array[j].id === id) {
         console.log(array[j].name)
         if (array[j].selected) {
-          console.clear()
-          console.log('Lost');
+          this.setState({ score: 0 });
+          this.setState({ status: "Keep going.." });
+          friends.forEach(friend => (friend.clicked = false));
         } else {
+          console.log(this.state.score);
           array[j].selected = true;
+          let newScore = this.state.score + 1;
+          this.setState({ score: newScore });
+          this.setState({ status: "Try again" });
         }
       }
     }
+    console.log(this.state.status, this.state.score);
     var m = array.length, t, i;
     while (m) {
       i = Math.floor(Math.random() * m--);
@@ -45,12 +53,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      {/* // <Wrapper> */}
-        <Nav />
+      // <div>
+      <Wrapper>
+        {/* <Nav />
         <Jumbtron />
+        <Nav /> */}
+
         {/* <Title>Clicky Game</Title> */}
-        {/* {this.state.friends.map(friend => (
+        {this.state.friends.map(friend => (
           <FriendCard
             shuffleFriends={this.shuffleFriends}
             id={friend.id}
@@ -60,9 +70,8 @@ class App extends Component {
             occupation={friend.occupation}
             location={friend.location}
           />
-        ))} */}
-          {/* </Wrapper> */}
-          </div>
+        ))}
+          </Wrapper>
     );
   }
 }
