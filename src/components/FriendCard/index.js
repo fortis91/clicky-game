@@ -3,8 +3,8 @@ import "./style.css";
 
 function FriendCard(props) {
   return (
-    <span onClick={() => props.shuffleFriends(props.id)} className="remove">
-
+    // <span onClick={() => props.shuffleFriends(props.id)} className="remove">
+    <span onClick={() => props.handleClick(props.id)} className="remove">
     <div className="card">
       <div className="img-container">
         <img alt={props.name} src={props.image} />

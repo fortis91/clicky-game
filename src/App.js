@@ -14,7 +14,7 @@ class App extends Component {
     status: "Click on any image to begin"
   };
 
-  
+
   //fisher shuffle - https://bost.ocks.org/mike/shuffle/
   shuffle = (array, id) => {
     for (var j = 0; j < array.length; j++) {
@@ -46,15 +46,56 @@ class App extends Component {
     return array;
   }
 
+  shuffleCards = () => {
+    let newCards = this.state.friends;
+    var m = newCards.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = newCards[m];
+      newCards[m] = newCards[i];
+      newCards[i] = t;
+    }
+    this.setState({ friends: newCards });
+  }
+
+  handleClick = (id) => {
+    console.log('click', id, this.state.score);
+    let array = this.state.friends;
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].id === id) {
+        if (array[i].selected) {
+          console.log("Already selected");
+          this.resetGame();
+        } else {
+          let newScore = this.state.score + 1;
+          this.setState({ score: newScore });
+          array[i].selected = true;
+        }
+      }
+    }
+    this.setState.friends = ({ friends: array });
+    this.shuffleCards();
+  }
+
+  resetGame = () => {
+    for (var i = 0; i < friends.length; i++) {
+      friends[i].selected = false;
+    }
+    this.setState(
+      {
+        friends: friends,
+        score: 0,
+        message: 'Click any image to start game'
+      });
+  }
+
   shuffleFriends = (id) => {
     let newFriends = this.shuffle(this.state.friends, id);
-
     this.setState({ newFriends });
   };
 
   render() {
     return (
-      // <div>
       <Wrapper>
         {/* <Nav />
         <Jumbtron />
@@ -64,6 +105,7 @@ class App extends Component {
         {this.state.friends.map(friend => (
           <FriendCard
             shuffleFriends={this.shuffleFriends}
+            handleClick={this.handleClick}
             id={friend.id}
             key={friend.id}
             name={friend.name}
@@ -73,7 +115,7 @@ class App extends Component {
           />
         ))}
         {/* <footer class="footer"><div class="bottom">Clicky Game! <img alt="react" src="assets/images/react.svg"></div></footer> */}
-          </Wrapper>
+      </Wrapper>
     );
   }
 }
