@@ -108,10 +108,10 @@ class App extends Component {
             handleClick={this.handleClick}
             id={friend.id}
             key={friend.id}
-            name={friend.name}
+            // name={friend.name}
             image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
+            // occupation={friend.occupation}
+            // location={friend.location}
           />
         ))}
         {/* <footer class="footer"><div class="bottom">Clicky Game! <img alt="react" src="assets/images/react.svg"></div></footer> */}
