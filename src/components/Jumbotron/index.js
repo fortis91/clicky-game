@@ -5,7 +5,7 @@ function Jumbotron() {
   return (
     <div className="jumbotron text-center">
       <h1>Memory Game</h1>
-       <p>Score point by clicking on each character, if you selecting a character twice the game is over!</p>
+       <p>Test your memory and earn points by clicking, just don't click the same flag twice.</p>
     </div>
   );
 }
