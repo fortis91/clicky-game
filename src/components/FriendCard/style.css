@@ -18,3 +18,20 @@
 .card > .img-container > img {
   width: 100%
 }
+
+.friend {
+  padding-top: 50px;
+  background: #ECEFF1;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px;
+  justify-content: space-around;
+  align-content: flex-start;
+  overflow: auto;
+  
+  width: 50%;
+  margin: auto;
+  /* border: 3px solid green; */
+  padding: 10px
+}

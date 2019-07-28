@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     friends,
     score: 0,
-    status: "Click on any image to begin"
+    highScore: 0,
+    message: "Click on any image to begin"
   };
 
 
@@ -23,14 +24,14 @@ class App extends Component {
         if (array[j].selected) {
           console.clear();
           this.setState({ score: 0 });
-          this.setState({ status: "Try again.." });
+          this.setState({ message: "Try again.." });
           friends.forEach(friend => (friend.clicked = false));
         } else {
           console.log(this.state.score);
           array[j].selected = true;
           let newScore = this.state.score + 1;
           this.setState({ score: newScore });
-          this.setState({ status: "Keep going" });
+          this.setState({ message: "Keep going" });
         }
       }
     }
@@ -96,26 +97,21 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper>
-        {/* <Nav />
+      <div>
+        <Nav message={this.state.message} score={this.state.score} highScore={this.state.highScore}/>
         <Jumbtron />
-        <Nav /> */}
-
-        {/* <Title>Clicky Game</Title> */}
-        {this.state.friends.map(friend => (
-          <FriendCard
-            shuffleFriends={this.shuffleFriends}
-            handleClick={this.handleClick}
-            id={friend.id}
-            key={friend.id}
-            // name={friend.name}
-            image={friend.image}
-            // occupation={friend.occupation}
-            // location={friend.location}
-          />
-        ))}
-        {/* <footer class="footer"><div class="bottom">Clicky Game! <img alt="react" src="assets/images/react.svg"></div></footer> */}
-      </Wrapper>
+        <Wrapper>
+          {this.state.friends.map(friend => (
+            <FriendCard
+              shuffleFriends={this.shuffleFriends}
+              handleClick={this.handleClick}
+              id={friend.id}
+              key={friend.id}
+              image={friend.image}
+            />
+          ))}
+        </Wrapper>
+      </div>
     );
   }
 }
